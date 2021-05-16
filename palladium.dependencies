@@ -1,7 +1,9 @@
 [
   {
-    "repository"  : "vendor_oneplus",
-    "target_path" : "vendor/oneplus"
+    "remote": "github",
+    "repository": "Durgesh33/proprietary_vendor_oneplus",
+    "target_path": "vendor/oneplus",
+    "branch": "11"
   },
   {
     "repository"  : "vendor_addons_oneplus_apps",
