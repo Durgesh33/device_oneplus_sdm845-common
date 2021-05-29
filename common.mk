@@ -98,7 +98,6 @@ PRODUCT_PACKAGES += \
     init.devicesettings.rc \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    init.smartcharging.rc \
     ueventd.qcom.rc
 
 # Device Settings
