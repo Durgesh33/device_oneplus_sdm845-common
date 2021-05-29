@@ -26,7 +26,7 @@ $(call inherit-product, vendor/addons/oneplus/apps/config.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
-    $(LOCAL_PATH)/overlay-palladium
+    $(LOCAL_PATH)/overlay-kangos
 
 PRODUCT_PACKAGES += \
     OnePlusIconShapeCircleOverlay \
@@ -79,6 +79,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/camera/android.hardware.camera.provider@2.4-service.rc:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PRODUCT_TARGET_VNDK_VERSION)/etc/init/android.hardware.camera.provider@2.4-service.rc
 
+# Board platform
+PRODUCT_BOARD_PLATFORM := sdm845
+
 # Boot control
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
@@ -118,12 +121,20 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_samsung_s6e3fc2x01_cmd_mode_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/qdcm_calib_data_samsung_s6e3fc2x01_cmd_mode_dsi_panel.xml \
     $(LOCAL_PATH)/configs/display/qdcm_calib_data_samsung_sofef00_m_cmd_mode_dsi_panel.xml:$(TARGET_COPY_OUT_VENDOR_OVERLAY)/etc/qdcm_calib_data_samsung_sofef00_m_cmd_mode_dsi_panel.xml
 
+# Face Unlock
+TARGET_FACE_UNLOCK_SUPPORTED := true
+
 # HIDL
 PRODUCT_PACKAGES += \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder.vendor \
     libhwbinder
+
+# HALS
+SRC_AUDIO_HAL_DIR := hardware/qcom-caf/sdm845/audio
+SRC_DISPLAY_HAL_DIR := hardware/qcom-caf/sdm845/display
+SRC_MEDIA_HAL_DIR := hardware/qcom-caf/sdm845/media
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -165,6 +176,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += oneplus-mock
 PRODUCT_BOOT_JARS += oneplus-mock
 
+# QCOM Hardware
+PRODUCT_USES_QCOM_HARDWARE := true
+
 # RCS
 PRODUCT_PACKAGES += \
     com.android.ims.rcsmanager \
@@ -190,6 +204,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     device/oneplus/common \
+    hardware/qcom-caf/sdm845/video \
+    hardware/qcom-caf/sdm845/audio \
+    hardware/qcom-caf/sdm845/media \
+    hardware/qcom-caf/wlan \
+    hardware/qcom-caf/thermal \
+    hardware/qcom-caf/common \
     vendor/qcom/opensource/commonsys/packages/apps/Bluetooth \
     vendor/qcom/opensource/commonsys/system/bt/conf
 
